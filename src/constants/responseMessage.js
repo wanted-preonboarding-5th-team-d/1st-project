@@ -7,4 +7,9 @@ module.exports = {
 
   //통계
   GET_LOG_SUCCESS: "이용 통계 조회 성공",
+
+  //사용자
+  SIGNUP_SUCCESS: "signup success",
+  SIGNOUT_SUCCESS: "signout success",
+  SIGNIN_SUCCESS: "signin success"
 };
