@@ -19,7 +19,7 @@ module.exports = new EntitySchema({
         },
         page_unique_id: {
             type: "varchar",
-            nullable: false
+            nullable: true
         },
         created_at: {
             type: "timestamp",

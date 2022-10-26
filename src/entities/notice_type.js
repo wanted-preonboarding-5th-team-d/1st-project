@@ -25,7 +25,6 @@ module.exports = new EntitySchema({
         joinColumn: {
             name: 'grade_id',
             },
-        // onDelete: "CASCADE",
         }
     },
 });

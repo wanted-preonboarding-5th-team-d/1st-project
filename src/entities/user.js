@@ -6,8 +6,7 @@ module.exports = new EntitySchema({
     columns: {
         id: {
             primary: true,
-            type: "int",
-            generated: true
+            type: "varchar"
         },
         name: {
             type: "varchar",
@@ -18,10 +17,6 @@ module.exports = new EntitySchema({
             nullable: false
         },
         password: {
-            type: "varchar",
-            nullable: false
-        },
-        uuid: {
             type: "varchar",
             nullable: false
         },
