@@ -16,7 +16,7 @@ const AppDataSource = new DataSource({
   TIME_ZONE: process.env.TIME_ZONE,
   entities: [users, notice, notice_type, grades, user_logs],
   synchronize: false,
-  logging: true,
+  logging: false,
 });
 
 module.exports = { AppDataSource };
