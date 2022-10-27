@@ -5,7 +5,7 @@ const userController = require("../controllers/userController");
 
 router.post("/signup", userController.signup);
 router.get("/signin", userController.signin);
-router.post("/signout", userController.signout);
+router.patch("/signout", userController.signout);
 
 module.exports = {
     router
