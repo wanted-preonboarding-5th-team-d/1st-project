@@ -26,7 +26,48 @@ const checkEmail = async (email) => {
     )
 }
 
+const checkGradeByEmail = async (email) => {
+    return await AppDataSource.query(
+        `
+        SELECT grade_id
+        FROM user
+        WHERE email = "${email}"
+        `
+    )
+}
+
+const getUserGradeByEmail = async(email) => {
+    return await AppDataSource.query(
+        `
+        SELECT grade_id FROM user WHERE email = "${email}";
+        `
+    )
+}
+
+const getUserIdByEmail = async(email) => {
+    return await AppDataSource.query(
+        `
+        SELECT id FROM user WHERE email = "${email}";
+        `
+    )
+}
+
+const checkPassword = async (email) => {
+    return await AppDataSource.query(
+        `
+        SELECT password FROM user
+        where email = "${email}";
+        `
+    )
+}
+
+
+
 module.exports = {
     signup,
-    checkEmail
+    checkEmail,
+    checkGradeByEmail,
+    getUserGradeByEmail,
+    getUserIdByEmail,
+    checkPassword
 }
