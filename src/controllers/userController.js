@@ -12,12 +12,12 @@ const userService = require("../services/userService");
 const signup = async (req, res) => {
     const { name, age, email, password, gender, phone } = req.body
     if( !name || !age || !email || !password || !gender || !phone ) {
-        return  res.send(
+        return  res.status(statusCode.BAD_REQUEST).send(
             util.fail(statusCode.BAD_REQUEST, responseMessage.NULL_VALUE)
         );
     }
     await userService.signup(name, age, email, password, gender, phone)
-    res.send(
+    res.status(statusCode.CREATED).send(
         util.success(statusCode.CREATED, responseMessage.SIGNUP_SUCCESS)
     );
 }
@@ -43,14 +43,14 @@ const signin = async (req, res) => {
 const signout = async (req, res) => {
     const { email, password } = req.query
     if( !email || !password ) {
-        return res.send(
+        return res.status(statusCode.BAD_REQUEST).send(
             util.fail(statusCode.BAD_REQUEST, responseMessage.NULL_VALUE)
         );
     }
 
     await userService.signout(email, password)
-    res.send(
-        util.success(statusCode.CREATED, responseMessage.SIGNOUT_SUCCESS)
+    res.status(statusCode.NO_CONTENT).send(
+        util.success(statusCode.NO_CONTENT)
     );
 }
 
