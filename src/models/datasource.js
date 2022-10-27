@@ -15,8 +15,8 @@ const AppDataSource = new DataSource({
   database: process.env.TYPEORM_DATABASE,
   TIME_ZONE: process.env.TIME_ZONE,
   entities: [users, notice, notice_type, grades, user_logs],
-  synchronize: true,
-  logging: false,
+  synchronize: false,
+  logging: true,
 });
 
 module.exports = { AppDataSource };
