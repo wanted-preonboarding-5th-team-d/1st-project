@@ -9,12 +9,12 @@ module.exports = new EntitySchema({
             type: "int",
             generated: true
         },
-        notice_id : {
-            type : "varchar",
-            nullable : false
-        },
         user_id: {
             type: "varchar",
+            nullable: false
+        },
+        view: {
+            type: "int",
             nullable: false
         },
         content: {
