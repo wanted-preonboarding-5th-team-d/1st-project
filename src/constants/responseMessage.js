@@ -4,4 +4,7 @@ module.exports = {
   NO_AUTHENTICATED: "접근 권한이 없습니다",
   DB_ERROR: "데이터베이스 오류",
   INTERNAL_SERVER_ERROR: "서버 내 오류",
+
+  //통계
+  GET_LOG_SUCCESS: "이용 통계 조회 성공",
 };
