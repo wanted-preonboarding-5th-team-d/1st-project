@@ -4,9 +4,9 @@ const router = express.Router();
 
 const noticeController = require("../controllers/noticeController")
 
-router.post("/type",noticeController.getBoardList);
+router.get("/list",noticeController.getNoticeList);
 router.post("/register", noticeController.registerNotice);
-router.get("/:notice_id",noticeController.noticeView);
+router.get("/detail/:notice_id",noticeController.noticeView);
 router.put("/edit",noticeController.editNotice);
 router.delete("/delete",noticeController.deleteNotice);
 
