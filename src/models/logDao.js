@@ -31,4 +31,20 @@ module.exports = {
       throw new Error("SERVER ERROR", 500);
     }
   },
+  getLogByTime: async (time) => {
+    try {
+      return await AppDataSource.query(
+        `
+        SELECT HOUR(created_at) AS visit_hour, COUNT(created_at) AS count
+        FROM user_log
+        WHERE created_at BETWEEN ? AND DATE_FORMAT(now(), '%Y-%m-%d 23:59:59')
+        GROUP BY visit_hour
+        ORDER BY visit_hour ASC
+        `,
+        [time]
+      );
+    } catch (err) {
+      throw new Error("SERVER ERROR", 500);
+    }
+  },
 };

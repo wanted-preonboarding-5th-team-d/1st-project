@@ -9,6 +9,12 @@ const getLogByGender = async (gender) => {
 const getLogByAge = async () => {
   const result = await logDao.getLogByAge();
 
+  return result;
+};
+
+const getLogByTime = async (time) => {
+  const result = await logDao.getLogByTime(time);
+
   console.log(result);
   return result;
 };
@@ -16,4 +22,5 @@ const getLogByAge = async () => {
 module.exports = {
   getLogByGender,
   getLogByAge,
+  getLogByTime,
 };
