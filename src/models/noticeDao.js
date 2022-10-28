@@ -18,6 +18,7 @@ const registerNotice = async (user_id,title,content,type_id) => {
                 VALUES ("${user_id}","${title}","${content}",${type_id});`
         )
     } catch (err) {
+        console.log(err)
         throw new Error( "INVALID DATA INPUT",500 );
     }
 }
@@ -96,7 +97,49 @@ const noticeView = async(notice_id) => {
             `SELECT * FROM notice WHERE notice_id = ${notice_id}`
         )
     } catch (err) {
-        throw new Error( "NO COTENT ",500);
+        throw new Error( "NO COTENT ",403);
+    }
+}
+
+const getNoticeInfo = async(notice_id) => {
+
+    return await AppDataSource.query(
+        `SELECT * FROM notice WHERE id = ${notice_id}`
+    );
+}
+
+const editNotice = async(title,content,notice_id) => {
+
+    try {
+        return await AppDataSource.query(
+            `UPDATE notice
+                SET 
+                title = "${title}",
+                content = "${content}"
+            WHERE id = ${notice_id}`
+        )
+    } catch (err) {
+        throw new Error( "FAILED TO UPDATE", 500 );
+    }
+}
+
+const getUserInfo = async(user_id) => {
+
+    return await AppDataSource.query(
+        `SELECT * FROM user WHERE id = "${user_id}"`
+    );
+}
+
+const deleteNotice = async(notice_id) => {
+
+    try {
+        return await AppDataSource.query(
+            `DELETE FROM notice
+            WHERE id = ${notice_id}`
+        )
+    } catch (err) {
+        console.log(err)
+        throw new Error( "FAILED TO DELETE", 500 );
     }
 }
 
@@ -108,4 +151,8 @@ module.exports = {
     getUserGrade,
     getNoticeGrade,
     noticeView,
+    getNoticeInfo,
+    editNotice,
+    getUserInfo,
+    deleteNotice
 }
