@@ -97,7 +97,7 @@ const noticeView = async(notice_id) => {
             `SELECT * FROM notice WHERE notice_id = ${notice_id}`
         )
     } catch (err) {
-        throw new Error( "NO COTENT ",500);
+        throw new Error( "NO COTENT ",403);
     }
 }
 
@@ -126,7 +126,7 @@ const editNotice = async(title,content,notice_id) => {
 const getUserInfo = async(user_id) => {
 
     return await AppDataSource.query(
-        `SELECT * FROM user WHERE id = ${user_id}`
+        `SELECT * FROM user WHERE id = "${user_id}"`
     );
 }
 
@@ -138,6 +138,7 @@ const deleteNotice = async(notice_id) => {
             WHERE id = ${notice_id}`
         )
     } catch (err) {
+        console.log(err)
         throw new Error( "FAILED TO DELETE", 500 );
     }
 }

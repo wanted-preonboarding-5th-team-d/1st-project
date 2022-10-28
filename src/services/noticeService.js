@@ -1,4 +1,5 @@
 const noticeDao = require("../models/noticeDao");
+const noticeExist = require("../utils/existCheck");
                        
 const getBoardList = async(user_id) => {
 
@@ -15,6 +16,8 @@ const registerNotice = async(user_id,title,content,type_id) => {
 }
 
 const noticeView = async(notice_id) => {
+
+    await noticeExist.checkNotice(notice_id);
 
     const notice = await noticeDao.noticeView(notice_id);
 
