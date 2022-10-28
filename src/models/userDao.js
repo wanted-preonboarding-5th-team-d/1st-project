@@ -1,5 +1,6 @@
 const { AppDataSource } = require("./datasource");
 const { v4: uuid } = require('uuid');
+const Error = require("../middlewares/errorConstructor");
 
 const signup = async (name, age, email, hashedPassword, gender, phone) => {
     const userId = uuid();
@@ -61,6 +62,24 @@ const checkPassword = async (email) => {
     )
 }
 
+const deleteUser = async (email) => {
+    try {
+        return await AppDataSource.query(
+            `
+            UPDATE user 
+            SET 
+            name = "null",
+            password = "null",
+            email = "null",
+            phone = "null"
+            WHERE email="${email}"
+            `
+        )
+    } catch (err) {
+        throw new Error("SERVER ERROR", 500)
+    }
+}
+
 
 
 module.exports = {
@@ -69,5 +88,7 @@ module.exports = {
     checkGradeByEmail,
     getUserGradeByEmail,
     getUserIdByEmail,
+    deleteUser,
+    checkEmail,
     checkPassword
 }
