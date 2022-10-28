@@ -7,6 +7,9 @@ const noticeController = require("../controllers/noticeController")
 router.post("/type",noticeController.getBoardList);
 router.post("/register", noticeController.registerNotice);
 router.get("/:notice_id",noticeController.noticeView);
-router.put("/edit",noticeController.editNotice)
+router.put("/edit",noticeController.editNotice);
+router.delete("/delete",noticeController.deleteNotice);
+
+
 
 module.exports = { router };
