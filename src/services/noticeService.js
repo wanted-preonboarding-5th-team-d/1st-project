@@ -1,11 +1,21 @@
 const noticeDao = require("../models/noticeDao");
-const noticeExist = require("../utils/existCheck");
-                       
-const getBoardList = async(user_id) => {
+const noticeExist = require("../utils/noticeExist");
+const noticeAuth = require("../utils/noticeAuth");
 
-    const boardList = await noticeDao.getBoardList(user_id);
+const getNoticeList = async() => {
 
-    return boardList;
+    const noticeList = await noticeDao.getNoticeList();
+
+    return noticeList;
+}
+
+const getTypeId = async(user_id) => {
+    
+    const type = await noticeDao.getTypeId(user_id);
+
+    const typeId = type[0].id;
+
+    return typeId;
 }
 
 const registerNotice = async(user_id,title,content,type_id) => {
@@ -24,41 +34,34 @@ const noticeView = async(notice_id) => {
     return notice;
 }
 
-const getNoticeInfo = async(notice_id) => {
+const addViewCnt = async(notice_id) => {
 
-    const noticeInfo = await noticeDao.getNoticeInfo(notice_id);
-    
-    return noticeInfo;
-}
-
-const editNotice = async(title,content,notice_id) => {
-
-    await noticeDao.editNotice(title,content,notice_id);
+    await noticeDao.addViewCnt(notice_id);
 
     return true;
 }
 
-const getUserInfo = async(user_id) => {
+const editNotice = async(notice_id ,user_id, title, content) => {
 
-    const userInfo = await noticeDao.getUserInfo(user_id);
+    await noticeAuth.editAuth(notice_id ,user_id, title, content)
 
-    return userInfo;
+    return true;
 }
 
-const deleteNotice = async(notice_id) => {
+const deleteNotice = async(notice_id ,user_id) => {
 
-    await noticeDao.deleteNotice(notice_id);
+    await noticeAuth.deleteAuth(notice_id ,user_id)
 
     return true;
 }
 
 module.exports = {
-
-    getBoardList,
+    
+    getNoticeList,
+    getTypeId,
     registerNotice,
     noticeView,
-    getNoticeInfo,
+    addViewCnt,
     editNotice,
-    getUserInfo,
     deleteNotice
 }
