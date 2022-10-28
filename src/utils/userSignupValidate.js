@@ -9,9 +9,8 @@ const signup = async (name, age, email, password, gender, phone) => {
     }
 
     const checkEmail = await userDao.checkEmail(email);
-    const checkResult = Number(Object.values(checkEmail[0])[0]);
 
-    if (checkResult == 1) {
+    if (checkEmail.length == 1) {
         throw new Error("EMAIL ALREADY EXIST", 400);
     }
 

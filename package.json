@@ -19,8 +19,10 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon server.js",
-    "test": "test"
+    "test": "DOTENV_CONFIG_PATH=.env.test jest --setupFiles=dotenv/config",
+    "test:dev": "DOTENV_CONFIG_PATH=.env.test jest --setupFiles=dotenv/config --coverage",
+    "start": "node server.js",
+    "start:dev": "nodemon server.js"
   },
   "repository": {
     "type": "git",

@@ -5,9 +5,8 @@ const jwt = require("jsonwebtoken");
 
 const signin = async (email, password) => {
     const checkEmail = await userDao.checkEmail(email);
-    const checkResult = Number(Object.values(checkEmail[0])[0]);
 
-    if (checkResult == 0) {
+    if (checkEmail.length == 0) {
         throw new Error("EMAIL NOT EXIST", 400);
     }
 

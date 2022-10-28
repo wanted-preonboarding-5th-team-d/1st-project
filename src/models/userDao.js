@@ -20,9 +20,8 @@ const signup = async (name, age, email, hashedPassword, gender, phone) => {
 const checkEmail = async (email) => {
     return await AppDataSource.query(
         `
-        SELECT EXISTS 
-        (SELECT * FROM user
-        WHERE email = "${email}");
+        SELECT * FROM user
+        WHERE email = "${email}";
         `
     )
 }
