@@ -32,7 +32,7 @@
 
 # API Documentation
 
-[https://www.notion.so/f7c1a835e35f4f4e81651a4d23259413?v=66a027fe202e4cef9a87cb8ef57e351f](https://www.notion.so/f7c1a835e35f4f4e81651a4d23259413)
+[API 명세](https://www.notion.so/API-5182bf90e18a4417a96338375d611eea)
 
 
 # 구현사항
