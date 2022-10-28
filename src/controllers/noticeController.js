@@ -76,7 +76,7 @@ const deleteNotice = async(req,res) => {
 
 
     if ( userGrade === 2 && noticeUserId !== user_id) {
-        return res.status(400).json({"message" : "게시글 작성자만 수정이 가능합니다."});
+        return res.status(400).json({"message" : "게시글 작성자만 삭제가 가능합니다."});
     }else if( noticeUserId != user_id && userGrade !== 2 ){
         await noticeService.deleteNotice(notice_id);
         return res.status(200).json({"message":"게시글이 삭제 되었습니다."});
