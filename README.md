@@ -27,6 +27,7 @@
 - 확장과 성능을 고려한 개발
 
 # ERD
+![웨인힐스브라이언트에이아이](https://user-images.githubusercontent.com/64879792/198527151-8b07c8fd-7144-49eb-9cd2-b85bd886736f.png)
 
 
 # API Documentation
